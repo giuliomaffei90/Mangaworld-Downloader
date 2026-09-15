@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# I prodotti di SwiftPM, e lo stato per utente di Xcode quando apre Package.swift
+/.build/
+/.swiftpm/
+
+# I fumetti su questo Mac: materiale di altri, mai nel repository
+/Data/
