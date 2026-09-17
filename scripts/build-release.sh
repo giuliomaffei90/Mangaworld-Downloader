@@ -20,6 +20,16 @@ echo "==> Build"
 swift build -c release
 BIN="$(swift build -c release --show-bin-path)/$EXE"
 
+echo "==> Icona"
+# The icon is an Icon Composer document. actool turns it into Assets.car — each appearance macOS 26
+# draws, the glass rendered by the system — plus an .icns for macOS 15, which predates the format.
+# Compiled before the previous app is touched: an actool that fails (as it does after an Xcode update,
+# until `xcodebuild -runFirstLaunch`) must not leave a bundle with no icon and no Info.plist behind.
+ICONS="$(mktemp -d)"
+xcrun actool "$REPO/icon/AppIcon.icon" --compile "$ICONS" --app-icon AppIcon \
+  --include-all-app-icons --platform macosx --target-device mac --minimum-deployment-target 15.0 \
+  --output-partial-info-plist "$(mktemp)" >/dev/null
+
 echo "==> Bundle"
 # Only ever replace a previous build of this app: anything else with the name is somebody's file.
 if [[ -e "$APP" && ! -x "$APP/Contents/MacOS/$EXE" ]]; then
@@ -30,11 +40,7 @@ pkill -f "/$EXE( |$)" || true
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp "$BIN" "$APP/Contents/MacOS/"
-# The icon is an Icon Composer document. actool turns it into Assets.car — each appearance macOS 26
-# draws, the glass rendered by the system — plus an .icns for macOS 15, which predates the format.
-xcrun actool "$REPO/icon/AppIcon.icon" --compile "$APP/Contents/Resources" --app-icon AppIcon \
-  --include-all-app-icons --platform macosx --target-device mac --minimum-deployment-target 15.0 \
-  --output-partial-info-plist "$(mktemp)" >/dev/null
+cp -R "$ICONS"/ "$APP/Contents/Resources/"
 cat > "$APP/Contents/Info.plist" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">

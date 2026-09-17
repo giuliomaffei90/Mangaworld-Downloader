@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
-  <!-- The open volume the arrow lands in: two solid pages, curving up from the spine, with a gap for it. -->
-  <g fill="#ffffff">
-    <path d="M500 604 C440 566 330 550 222 560 A18 18 0 0 0 206 578 L206 800 A18 18 0 0 0 226 818 C334 808 440 820 500 856 Z"/>
-    <path d="M524 604 C584 566 694 550 802 560 A18 18 0 0 1 818 578 L818 800 A18 18 0 0 1 798 818 C690 808 584 820 524 856 Z"/>
-  </g>
-</svg>

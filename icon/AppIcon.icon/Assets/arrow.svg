@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
-  <!-- The download mark above the book: a stem and a chevron, 58 units thick. Filled outlines of
-       round-capped strokes, not strokes: the icon renderer ignores fill="none" and fills every path. -->
-  <g fill="#ffffff">
-    <path d="M483 190 A29 29 0 0 1 541 190 L541 470 A29 29 0 0 1 483 470 Z"/>
-    <path d="M371.49 400.51 L491.49 520.51 A29 29 0 0 0 532.51 479.49 L412.51 359.49 A29 29 0 0 0 371.49 400.51 Z"/>
-    <path d="M532.51 520.51 L652.51 400.51 A29 29 0 0 0 611.49 359.49 L491.49 479.49 A29 29 0 0 0 532.51 520.51 Z"/>
-  </g>
-</svg>
